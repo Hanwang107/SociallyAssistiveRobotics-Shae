@@ -6,5 +6,5 @@ Surgical Robotic System
 #### Install Python package:
 ##### pyaudio:
 	sudo pip3 pyaudio 
-##### Install SpeechRecognition: 
+##### SpeechRecognition: 
 	sudo pip3 install SpeechRecognition
