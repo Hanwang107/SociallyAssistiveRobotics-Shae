@@ -3,7 +3,8 @@ Surgical Robotic System
 
 
 ### Speech recognition:
-#### Install pyaudio:
+#### Install Python package:
+##### pyaudio:
 	sudo pip3 pyaudio 
-#### Install SpeechRecognition: (https://github.com/Uberi/speech_recognition)
+##### Install SpeechRecognition: 
 	sudo pip3 install SpeechRecognition
