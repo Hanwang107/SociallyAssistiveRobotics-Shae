@@ -1,5 +1,5 @@
 # SociallyAssistiveRobotics-Shae
-Surgical Robotic System
+Surgical Robotic System: Arm Path Planning, object recognition, speech recognition, Central Intelligence System.
 
 
 ### Speech recognition:
