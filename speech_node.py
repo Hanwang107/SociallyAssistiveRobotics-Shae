@@ -39,19 +39,41 @@
 import rospy
 from std_msgs.msg import String
 import google_speech_recognition as sr
+import RobotTasks as Tasks
+
 
 def speech_talker():
     pub = rospy.Publisher('chatter', String, queue_size=10)
     rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(100) # 10hz
+
+    rate = rospy.Rate(100) # 100hz: go through the loop 100 times per second
     while not rospy.is_shutdown():
         # speech recognition
-        recognition = sr.speech()
+        original_recognition = sr.speech()
 
-        recog_str = recognition
-        rospy.loginfo(recog_str)
-        pub.publish(recog_str)
+        # extract useful information(commands) from speech
+        task_str = extract_task(original_recognition) 
+
+        if task_str != "":
+            print("Command: " + task_str)
+            rospy.loginfo(command_str)
+            pub.publish(command_str)
+        else:
+            print("There is no any command from what you said!")
+
         rate.sleep()
+
+
+def extract_task(original_recognition):
+    # Convert the speech into lowercase
+    speech = original_recognition.lower()
+
+    # To check if the speech contains robot task
+    for token in speech.split():
+        if token in RobotTasks.robot_tasks_list:
+            return token
+    
+    return ""
 
 
 if __name__ == '__main__':
