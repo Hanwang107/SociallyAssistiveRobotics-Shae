@@ -44,7 +44,7 @@ import RobotTasks as Tasks
 
 def speech_talker():
     pub = rospy.Publisher('chatter', String, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
+    rospy.init_node('speecher', anonymous=True)
 
     rate = rospy.Rate(100) # 100hz: go through the loop 100 times per second
     while not rospy.is_shutdown():
@@ -56,8 +56,8 @@ def speech_talker():
 
         if task_str != "":
             print("Command: " + task_str)
-            rospy.loginfo(command_str)
-            pub.publish(command_str)
+            rospy.loginfo(task_str)
+            pub.publish(task_str)
         else:
             print("There is no any command from what you said!")
 
